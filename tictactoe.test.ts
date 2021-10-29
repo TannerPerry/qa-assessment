@@ -1,9 +1,9 @@
 import { Builder, Capabilities, By } from "selenium-webdriver"
+const {checkBox} = require('./tictac.ts')
 
 const chromedriver = require('chromedriver')
 
 const driver = new Builder().withCapabilities(Capabilities.chrome()).build()
-
 
 beforeAll(async () => {
     await driver.get('http://127.0.0.1:5500/tictacjs.html')
@@ -20,9 +20,9 @@ test('I can start a game', async () => {
 
 });
 it('I make a move', async () => {
-
-    let makeMove = await(await driver).findElement(By.xpath('//*[@id="cell-0"]'))
-    await makeMove.click()
+    await checkBox(driver)
+    // let makeMove = await(await driver).findElement(By.xpath('//*[@id="cell-0"]'))
+    // await makeMove.click()
     await driver.sleep(2000)
 })
 it('I make a second move', async () => {
